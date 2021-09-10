@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+
+<head>
+    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+            crossorigin="anonymous"></script>
+    <title>Title</title>
+</head>
+<body>
+
+<style>
+    .con {
+        margin-top: 80px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+        0 10px 10px rgba(0, 0, 0, 0.22);
+        position: relative;
+        overflow: hidden;
+        width: 1500px;
+        max-width: 100%;
+        min-height: 480px;
+
+
+    }
+</style>
+
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#" th:href="@{/home}">
+            Library Service
+        </a>
+        <form class="d-flex">
+            <a th:href="@{/searchBooksByAuthor}" class="btn btn-outline-dark"
+               role="button">Search again</a>
+        </form>
+    </div>
+</nav>
+
+<div class="container-fluid con">
+    <form action="#">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">ID</th>
+                <th scope="col">Title</th>
+                <th scope="col">Year of pub.</th>
+                <th scope="col">Authors</th>
+                <th scope="col">Publishing houses</th>
+                <th scope="col">Clients</th>
+                <th scope="col">Administrator</th>
+                <th scope="col">Delete</th>
+                <th scope="col">Update</th>
+                <th scope="col">Lend out</th>
+                <th scope="col">Hand over</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="book , iterStat : ${books}">
+                <th scope="row" th:text="${iterStat.count}"></th>
+                <td th:text="${book.id}"></td>
+                <td th:text="${book.title}"></td>
+                <td th:text="${book.year}"></td>
+                <td th:text="${book.author.firstname} + ' ' + ${book.author.lastname}"></td>
+                <td th:text="${book.publishingHouse.title} + ' ' + ${book.publishingHouse.address}"></td>
+                <td th:text="${book.client.firstname} + ' ' + ${book.client.lastname} + ' ' + ${book.client.birthday} "></td>
+                <td th:text="${book.user.email}"></td>
+                <td><a th:href="@{'/getAllBooks/delete/' + ${book.id}}" class="btn btn-danger"
+                       role="button">delete</a></td>
+                <td><a th:href="@{'/getAllBooks/update/' + ${book.id}}" class="btn btn-info"
+                       role="button">update</a></td>
+                <td><a th:href="@{'/getAllBooks/checkOut/' + ${book.id}}" class="btn btn-success"
+                       role="button">land out</a></td>
+                <td><a th:href="@{'/getAllBooks/returnBook/' + ${book.id}}" class="btn btn-warning"
+                       role="button">hand over</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+</body>
+</html>

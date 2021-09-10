@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+            crossorigin="anonymous"></script>
+    <title>Title</title>
+</head>
+<body>
+<style>
+    .email {
+        margin-right: 30px;
+    }
+
+    .firstname {
+        margin-right: 22px;
+    }
+
+    .lastname {
+        margin-right: 13px;
+    }
+
+    .name {
+        margin-top: 0px;
+        margin-bottom: -13px;
+        margin-right: 3px;
+    }
+
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#" th:href="@{/home}">Library Service</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        Books
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="#" th:href="@{/addBook}">Add new book</a></li>
+                        <li><a class="dropdown-item" href="#" th:href="@{/getAllBooks}">Get all books</a></li>
+                        <li><a class="dropdown-item" href="#" th:href="@{/searchBooksByAuthor}">Search by author</a>
+                        </li>
+                        <li><a class="dropdown-item" href="#" th:href="@{/searchBooksByPublishingHouse}">Search by
+                            publishing house</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        Authors
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="#" th:href="@{/addAuthor}">Add new author</a></li>
+                        <li><a class="dropdown-item" href="#" th:href="@{/getAllAuthors}">Get all authors</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        Publishing houses
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="#" th:href="@{/addPublishingHouse}">Add new publishing
+                            house</a></li>
+                        <li><a class="dropdown-item" href="#" th:href="@{/getAllPublishingHouses}">Get all publishing
+                            houses</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        Clients
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="#" th:href="@{/addClient}">Add new client</a></li>
+                        <li><a class="dropdown-item" href="#" th:href="@{/getAllClients}">Get all clients</a></li>
+                        <li><a class="dropdown-item" href="#" th:href="@{/searchClientsByName}">Search client by
+                            name</a></li>
+                        <li><a class="dropdown-item" href="#" th:href="@{/searchClientsByBirthday}">Search client by
+                            birthday</a></li>
+                    </ul>
+
+
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link active" aria-current="page" href="#"
+                       th:href="@{/getAllAccounting}">Аccounting</a>
+                </li>
+            </ul>
+        </div>
+
+
+        <scope class="name">
+            <h5 class="email" th:text="${user.email}">maksimchuyashkou@gmail.com</h5>
+            <h6>
+                <scope class="firstname" th:text="${user.firstname}">firstname</scope>
+                <scope class="lastname" th:text="${user.lastname}">lastname</scope>
+            </h6>
+        </scope>
+        <a th:href="@{/logout}" class="btn btn-outline-dark"
+           role="button">Logout</a>
+    </div>
+</nav>
+</body>
+</html>
