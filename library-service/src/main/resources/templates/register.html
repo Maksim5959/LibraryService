@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+
+<head>
+    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+            crossorigin="anonymous"></script>
+    <title>Title</title>
+</head>
+<body>
+
+<style>
+    .con {
+        margin-top: 120px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+        0 10px 10px rgba(0, 0, 0, 0.22);
+        position: relative;
+        overflow: hidden;
+        width: 768px;
+        max-width: 100%;
+        min-height: 480px;
+
+
+    }
+</style>
+
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#" th:href="@{/}">
+            Library Service
+        </a>
+    </div>
+</nav>
+
+<div class="container-fluid con">
+    <form action="#" method="POST" th:action="@{/register}" th:object="${user}">
+        <br>
+        <br>
+        <h1 align="center">Sing up</h1>
+        <br>
+        <input type="email" class="form-control " placeholder="Enter email" th:field="*{email}" required>
+        <br>
+        <input type="password" class="form-control " placeholder="Enter password" th:field="*{password}" required>
+        <br>
+        <input type="text" class="form-control " placeholder="Enter firstname" th:field="*{firstname}" required>
+        <br>
+        <input type="text" class="form-control " placeholder="Enter lastName" th:field="*{lastname}" required>
+        <br>
+        <button type="submit" class="btn btn-outline-dark">Sing up</button>
+        <a th:href="@{/}" class="btn btn-outline-dark"
+           role="button">Back</a>
+    </form>
+</div>
+</body>
+</html>
